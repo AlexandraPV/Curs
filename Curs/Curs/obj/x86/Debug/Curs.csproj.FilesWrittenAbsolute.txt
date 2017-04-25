@@ -1,0 +1,5 @@
+/Users/Alisandra/Projects/Curs/Curs/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/Alisandra/Projects/Curs/Curs/bin/Debug/Curs.exe.mdb
+/Users/Alisandra/Projects/Curs/Curs/bin/Debug/Curs.exe
+/Users/Alisandra/Projects/Curs/Curs/obj/x86/Debug/Curs.exe
+/Users/Alisandra/Projects/Curs/Curs/obj/x86/Debug/Curs.exe.mdb
