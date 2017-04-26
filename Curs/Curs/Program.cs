@@ -23,19 +23,7 @@ namespace Curs
 		public DateTime dateBirth;
 		List<BookAll> listBook = new List<BookAll>();
 
-		public Object Clone()
-		{
-			Object clone = null;
-			try
-			{
-				clone = this.MemberwiseClone();
-			}
-			catch (Exception e)
-			{
-				Console.WriteLine(e.Message);
-			}
-			return clone;
-		}
+
 
 		public int getId()
 		{
@@ -75,30 +63,22 @@ namespace Curs
 
 	}
 
-	public abstract class BookAll
+	public class BookAll
 
 	{
 		public int id;
-		public String name;
-		public String autor;
-		public String ganre;
-		public String type;
+		public string name;
+		public string autor;
+		public string ganre;
+		public string type;
 		public int state;
 		public bool personState;
 
-
-		public Object Clone()
+		public BookAll(string name, string autor, string ganre)
 		{
-			Object clone = null;
-			try
-			{
-				clone = this.MemberwiseClone();
-			}
-			catch (Exception e)
-			{
-				Console.WriteLine(e.Message);
-			}
-			return clone;
+			this.name = name;
+			this.autor = autor;
+			this.ganre = ganre;
 		}
 
 		public String getAutor()

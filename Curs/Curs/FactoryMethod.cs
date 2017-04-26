@@ -59,7 +59,7 @@ class Program
 
 	{
 
-		static void Main()
+		/*static void Main()
 		{
 			Creator c = new Creator();
 			IBook book;
@@ -70,7 +70,7 @@ class Program
 
 			Console.ReadKey();
 
-		}
+		}*/
 
 	}
 
