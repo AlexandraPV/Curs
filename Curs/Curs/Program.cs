@@ -11,23 +11,46 @@ namespace Curs
 		}
 	}
 */
+	public class PersonCache
+	{
 
+		private static Hashtable personMap = new Hashtable();
 
+		public static Person getPerson(String personCode)
+		{
+
+			Person cachedPerson = (Person)personMap[personCode];
+
+			return cachedPerson;
+
+		}
+	}
 	public  class Person
 
 	{
 
 		public String name;
 		public String surname;
-		public int id;
-		public DateTime dateBirth;
+		public String login;
+		public string password;
+		public String dateBirth;
 		List<BookAll> listBook = new List<BookAll>();
 
 
-
-		public int getId()
+		public Person(String name,String surname, String login, string password, String dateBirth, List<BookAll> listBook)
 		{
-			return id;
+			this.name = name;
+			this.surname = surname;
+			this.login = login;
+			this.password = password;
+			this.dateBirth = dateBirth;
+			this.listBook = listBook;
+		}
+
+
+		public String getLogin()
+		{
+			return login;
 		}
 
 
@@ -36,12 +59,17 @@ namespace Curs
 			return this.surname;
 		}
 
+		public String getPass()
+		{
+			return password;
+		}
+
 		public String getName()
 		{
 			return this.name;
 		}
 
-		public DateTime getDateBirth()
+		public String getDateBirth()
 		{
 			return this.dateBirth;
 		}
@@ -66,13 +94,16 @@ namespace Curs
 	public class BookAll
 
 	{
+
+
 		public int id;
 		public string name;
 		public string autor;
 		public string ganre;
 		public string type;
 		public int state;
-		public bool personState;
+		private State personState;
+
 
 		public BookAll(string name, string autor, string ganre)
 		{
@@ -112,7 +143,7 @@ namespace Curs
 			return id;
 		}
 
-		public bool getStatePerson()
+		private State getStatePerson()
 		{
 			return personState;
 		}
@@ -122,12 +153,16 @@ namespace Curs
 			state = stateNew;
 		}
 
-		public void setStatePerson(bool stateNew)
+		private void setStatePerson(State stateNew)
 		{
 			personState = stateNew;
 		}
 
 
 	}
+
+
+
+
 
 }

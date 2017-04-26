@@ -3,7 +3,7 @@ namespace Curs
 
 {
 
-	class Program
+	/*class Program
 
 	{
 		
@@ -52,7 +52,7 @@ namespace Curs
 
 	}
 
-
+*/
 
 	public abstract class IPrintStrategy
 

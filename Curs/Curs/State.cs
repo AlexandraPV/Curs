@@ -1,8 +1,4 @@
-﻿
-//NO
-
-/*
-using System;
+﻿using System;
 namespace Curs
 
 {
@@ -11,88 +7,115 @@ namespace Curs
 
 	{
 
-		protected string strStatename;
+		public string strStatename;
 
 		abstract public void TakeBook();
 
 	}
 
 
-	class FirstState : State
+	class BookInLibraryState : State
 
 	{
 
-		public FirstState()
+		public BookInLibraryState()
 
 		{
-			strStatename = "FirstState";
+			strStatename = "BookInLibraryState";
 		}
 
 		override public void TakeBook()
-		{
-			Console.WriteLine("Left 2 books");
-
-		}
-
-	}
-
-	class SecondState : State
-
-	{
-
-		public SecondState()
 
 		{
-			strStatename = "SecondState";
-		}
-
-		override public void TakeBook()
-		{
-			Console.WriteLine("Left 1 books");
-
-		}
-
-	}
-
-	class EndState : State
-
-	{
-
-		public EndState()
-
-		{
-			strStatename = "EndState";
-		}
-
-		override public void TakeBook()
-		{
-			Console.WriteLine("No! You can`t take a book");
+			Console.WriteLine("You can take a book");
 
 		}
 
 	}
 
 
-	class TakeBook
+	class BookTakenState : State
+
+	{
+		public BookTakenState()
+
+		{
+			strStatename = "BookTakenState";
+		}
+
+		override public void TakeBook()
+
+		{
+
+			Console.WriteLine("The book is taken");
+
+		}
+
+	}
+
+
+	class BookTakenLongTimeState : State
+
 	{
 
+		public BookTakenLongTimeState()
+
+		{
+			strStatename = "BookTakenLongTimeState";
+		}
+
+		override public void TakeBook()
+
+		{
+
+			Console.WriteLine("The book is taken for a long time");
+
+		}
+
+	}
+
+	class BookLostState : State
+
+	{
+
+		public BookLostState()
+
+		{
+			strStatename = "BookLostState";
+		}
+
+		override public void TakeBook()
+
+		{
+
+			Console.WriteLine("The book is lost");
+
+		}
+
+	}
+
+	/*
+
+	class LibraryBook
+	{
 		private State CurrentState;
 
-		FirstState firstState = new FirstState();
-		SecondState secondState = new SecondState();
-		EndState endState = new EndState();
+		BookInLibraryState bookInLibraryState = new BookInLibraryState();
+		BookTakenState bookTakenState = new BookTakenState();
+		BookTakenLongTimeState bookTakenLongTimeState = new BookTakenLongTimeState();
+		BookLostState bookLostState = new BookLostState();
 
-		public TakeBook()
+
+		public LibraryBook()
 		{
-
 			CurrentState = firstState;
 		}
 
-		public void TakeBookFirst()
+		public void InstallProgramFirst()
 		{
 			if (CurrentState == firstState)
 			{
-				CurrentState.TakeBook();
+				CurrentState.Install();
 				CurrentState = secondState;
 			}
 			else Console.WriteLine("Programm already is installed");
@@ -142,6 +165,9 @@ namespace Curs
 
 	}
 
+
+
+
 	public class Client
 
 	{
@@ -167,7 +193,5 @@ namespace Curs
 		}
 
 	}
-
-}
-
 */
+}

@@ -38,6 +38,9 @@
     <Compile Include="Mediator.cs" />
     <Compile Include="State.cs" />
     <Compile Include="TemplateMethod.cs" />
+    <Compile Include="Facade.cs" />
+    <Compile Include="MainPro.cs" />
+    <Compile Include="Proxy.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

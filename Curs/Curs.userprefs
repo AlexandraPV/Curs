@@ -1,11 +1,14 @@
 ﻿<Properties StartupConfiguration="{8FA3E99A-6EEB-48E7-9EEC-7499EB64FA4B}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Curs/TemplateMethod.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Curs/Proxy.cs">
     <Files>
-      <File FileName="Curs/Program.cs" Line="77" Column="10" />
-      <File FileName="Curs/FactoryMethod.cs" Line="73" Column="6" />
-      <File FileName="Curs/Mediator.cs" Line="65" Column="41" />
-      <File FileName="Curs/State.cs" Line="2" Column="5" />
-      <File FileName="Curs/TemplateMethod.cs" Line="1" Column="1" />
+      <File FileName="Curs/Program.cs" Line="142" Column="2" />
+      <File FileName="Curs/FactoryMethod.cs" Line="42" Column="8" />
+      <File FileName="Curs/Mediator.cs" Line="11" Column="3" />
+      <File FileName="Curs/State.cs" Line="196" Column="3" />
+      <File FileName="Curs/TemplateMethod.cs" Line="55" Column="3" />
+      <File FileName="Curs/Facade.cs" Line="21" Column="4" />
+      <File FileName="Curs/MainPro.cs" Line="19" Column="41" />
+      <File FileName="Curs/Proxy.cs" Line="2" Column="15" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
