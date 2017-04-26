@@ -1,9 +1,11 @@
 ﻿<Properties StartupConfiguration="{8FA3E99A-6EEB-48E7-9EEC-7499EB64FA4B}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Curs/Mediator.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Curs/TemplateMethod.cs">
     <Files>
-      <File FileName="Curs/Program.cs" Line="13" Column="3" />
-      <File FileName="Curs/FactoryMethod.cs" Line="17" Column="3" />
-      <File FileName="Curs/Mediator.cs" Line="2" Column="1" />
+      <File FileName="Curs/Program.cs" Line="77" Column="10" />
+      <File FileName="Curs/FactoryMethod.cs" Line="73" Column="6" />
+      <File FileName="Curs/Mediator.cs" Line="65" Column="41" />
+      <File FileName="Curs/State.cs" Line="2" Column="5" />
+      <File FileName="Curs/TemplateMethod.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />

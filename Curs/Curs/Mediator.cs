@@ -4,7 +4,7 @@ namespace Curs
 
 {
 
-	class MainApp
+	/*class MainApp
 
 	{
 
@@ -39,7 +39,7 @@ namespace Curs
 		}
 
 	}
-
+*/
 
 
 	class AbstractCompany
