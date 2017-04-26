@@ -1,10 +1,8 @@
-﻿
-//NO
-/*using System;
+﻿using System;
 namespace Curs
 
 {
-	class Program
+	/*class Program
 
 	{
 
@@ -20,16 +18,16 @@ namespace Curs
 
 		}
 
-	}
+	}*/
 
 	public class ConvertAll
 	{
-		ConvertFootUkr convertFootUkr = new ConvertFootUkr();
-		ConvertUkrEngl convertUkrEngl = new ConvertUkrEngl();
+		MenuOne menuOne = new MenuOne();
+		MenuTwo menuTwo = new MenuTwo();
 
-		public float Convert(float val)
+		public void Convert(string val)
 		{
-			return convertUkrEngl.Convert(convertFootUkr.Convert(val));
+		   menuTwo.Convert(menuOne.Convert(val));
 		}
 	}
 
@@ -39,18 +37,14 @@ namespace Curs
 
 		public int Convert(string val)
 		{
+			
                 switch (val)
 			{
-				case "enter": return 4;
-				case 38: return 5;
-				case 39: return 6;
-				case 40: return 6.5f;
-				case 41: return 7.5f;
-				case 42: return 8;
-				case 43: return 9;
-				case 44: return 9.5f;
-				case 45: return 10.5f;
-				case 46: return 11.5f;
+				case "exit": return 0;   
+				case "h": return 1;
+				//case "a": return 2;      //account
+				case "f": return 3;      //found book
+				case "p": return 4;      //print book
 				default: Console.WriteLine("ERROR"); return -1;
 
 			}
@@ -60,26 +54,77 @@ namespace Curs
 
 	public class MenuTwo
 	{
-		public float Convert(int val)
+		static public void ChooseAgen()
 		{
-			switch (val)
-			{
-				case 37: return 4;
-				case 38: return 5;
-				case 39: return 6;
-				case 40: return 6.5f;
-				case 41: return 7.5f;
-				case 42: return 8;
-				case 43: return 9;
-				case 44: return 9.5f;
-				case 45: return 10.5f;
-				case 46: return 11.5f;
-				default: Console.WriteLine("ERROR"); return -1;
+			string cover;
+			string pages;
+			Console.WriteLine("Type of cover (soft or hard): ");
+			cover = Console.ReadLine();
+			Console.WriteLine("Type of pages (medium or good): ");
+			pages = Console.ReadLine();
 
+			Creator c = new Creator();
+			IBook book;
+
+			book = c.FactoryMethod(cover, pages);
+			Console.WriteLine("New Book " + book.ShipFrom());
+
+
+		}
+
+		static public void PrintBook()
+		{
+			InventoryItem itm = new InventoryItem();
+			Medium mediumComp = new Medium();
+			Cheap cheapComp = new Cheap();
+			Expensive expensiveComp = new Expensive();
+
+			string cost;
+			string cover;
+			string pages;
+
+			Console.WriteLine("Type of cover (Soft or Hard): ");
+			cover = Console.ReadLine();
+			Console.WriteLine("Type of pages (Medium or Good): ");
+			pages = Console.ReadLine();
+			Console.WriteLine("Type of cost (Cheap, Medium or Expensive): ");
+			cost = Console.ReadLine();
+
+			if ((cover.Equals("Soft") == true) && (cost.Equals("Cheap") == true) && (pages.Equals("Medium") == true))
+			{
+				itm.SetCost(cheapComp);
+				itm.ItemWithStrat();
 			}
+			else
+				if ((cover.Equals("Soft") == true) && (cost.Equals("Medium") == true) && (pages.Equals("Good") == true))
+			{
+				itm.SetCost(mediumComp);
+				itm.ItemWithStrat();
+			}
+			else
+				if ((cover.Equals("Hard") == true) && (cost.Equals("Expensive") == true) && (pages.Equals("Good") == true))
+			{
+				itm.SetCost(expensiveComp);
+				itm.ItemWithStrat();
+			}
+			else Console.WriteLine("Can`t print your book");
+		}
+
+		public void Convert(int val)
+		{
+			if (val == 1)
+				Console.WriteLine(" h - help \n a - account \n f - found book \n p - print book \n");
+			else if (val == 3)
+				Console.WriteLine("Found book");
+			else if (val == 4)
+			{
+				ChooseAgen();
+				PrintBook();
+			}
+			else Console.WriteLine("ERROR");
+					
+
 		}
 	}
 
 }
-
-*/

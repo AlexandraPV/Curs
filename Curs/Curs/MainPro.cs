@@ -75,7 +75,7 @@ namespace Curs
 			personMap[pers.login] = pers;	
 			Console.WriteLine(name +" "+ surname +" Welcome to library!");
 			Account(pers);
-			Enter(personMap);    //test (must delete)
+			//Enter(personMap);    //test (must delete)
 		}
 
 		static public void Account(Person pers)
@@ -88,10 +88,24 @@ namespace Curs
 			{
 				Console.WriteLine(book.name + " " + book.autor + "\n");
 			}
-
+			Console.WriteLine("\n");
+			Command();
 
 		}
 
+
+	
+
+		static public void Command()
+		{
+			Console.WriteLine("\n \n If you need help please enter 'h' : ");
+			string val = Console.ReadLine();
+			ConvertAll convertall = new ConvertAll();
+			convertall.Convert(val);
+			string val1 = Console.ReadLine();
+			convertall.Convert(val1);
+
+		}
 
 		public static Hashtable personMap = new Hashtable();
 
