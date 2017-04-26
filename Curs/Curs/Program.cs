@@ -25,6 +25,7 @@ namespace Curs
 
 		}
 	}
+
 	public  class Person
 
 	{

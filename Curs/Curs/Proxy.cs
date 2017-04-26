@@ -29,7 +29,7 @@ namespace Curs
 
 	abstract class Abst_Lib
 	{
-		public abstract void Enter_Lib(Person pers, string pass);
+		public abstract bool Enter_Lib(Person pers, string pass);
 
 	}
 
@@ -39,12 +39,12 @@ namespace Curs
 
 	{
 
-		public override void Enter_Lib(Person pers, string pass)
+		public override bool Enter_Lib(Person pers, string pass)
 
 		{
 
 			Console.WriteLine("Welcome to library, {0}", pers.name);
-
+			return true;
 		}
 
 	}
@@ -57,19 +57,17 @@ namespace Curs
 
 		Lib lib = new Lib();
 
-
-
-		public override void Enter_Lib(Person pers, string pass)
+		public override bool Enter_Lib(Person pers, string pass)
 
 		{
 			if (pers.password.Equals(pass) == true)
 
-				lib.Enter_Lib(pers, pass);
+				return true;
 
-			else
-
-				Console.WriteLine("Repead ener");
-
+			else {
+				Console.WriteLine("Repead enter");
+				return false;
+			}
 		}
 
 	}
