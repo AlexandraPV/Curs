@@ -46,24 +46,25 @@ namespace Curs
 			ValidationPerson Prime_Facecontrol = new ValidationPerson();
 			foreach (Person pers in listpers)
 			{
-				Console.WriteLine(pers.name);
-				if (pers.login == loginP)
+
+				if (pers.Login == loginP)
 				{
 					if (Prime_Facecontrol.Enter_Lib(pers, passwordP) == true)
 					{
 						Account(pers);
 					}
+
 					else {
 						Console.WriteLine("Try again");
 						Enter();
+
 					}
 				}
+
+
 			}
 
-
 		}
-
-
 		static public void Registration()
 		{
 			BookAll book1 = new BookAll("name1", "autor1", "ganre1");
@@ -143,7 +144,7 @@ namespace Curs
 				List<Person> newPerson = (List<Person>)formatter.Deserialize(fs);
 
 				Console.WriteLine("Объект десериализован");
-				Console.WriteLine(newPerson[0].Name + newPerson[0].Surname);
+				//Console.WriteLine(newPerson[0].Name + newPerson[0].Surname);
 				//Console.WriteLine(newPerson[1].Name + newPerson[1].Surname);
 				return newPerson;
 			}
@@ -166,6 +167,38 @@ namespace Curs
 		}
 
 
+
+		public static List<BookAll> OpenListBooks()
+		{
+			XmlSerializer formatter = new XmlSerializer(typeof(List<BookAll>));
+			using (FileStream fs = new FileStream("book.xml", FileMode.OpenOrCreate))
+			{
+				List<BookAll> newBooks = (List<BookAll>)formatter.Deserialize(fs);
+
+				Console.WriteLine("Объект десериализован");
+				//Console.WriteLine(newPerson[0].Name + newPerson[0].Surname);
+				//Console.WriteLine(newPerson[1].Name + newPerson[1].Surname);
+				return newBooks;
+			}
+		}
+
+		public static void WriteInListBooks(BookAll book)
+		{
+			XmlSerializer formatter = new XmlSerializer(typeof(List<BookAll>));
+			List<BookAll> booklist = OpenListBooks();
+			Console.WriteLine(book.NameB);
+			booklist.Add(book);
+
+			// получаем поток, куда будем записывать сериализованный объект
+			using (FileStream fs = new FileStream("books.xml", FileMode.OpenOrCreate))
+			{
+
+				formatter.Serialize(fs, booklist);
+				Console.WriteLine("WriteInListPerson");
+			}
+		}
+
+
 		static public void Command()
 		{
 			Console.WriteLine("\n \n If you need help please enter 'h' : ");
@@ -181,14 +214,6 @@ namespace Curs
 
 		static void Main(string[] args)
 		{
-			List<BookAll> listBook1 = new List<BookAll>();
-			BookAll book1 = new BookAll("name1", "autor1", "ganre1");
-			listBook1.Add(book1);
-			Person person = new Person("Name", "Surname", "login", "pass", "01/02/1998", listBook1);
-			Person person2 = new Person("Name2", "Surname2", "login2", "pass2", "01/02/1998", listBook1);
-			WriteInListPerson(person);
-			WriteInListPerson(person2);
-			//OpenListPerson();
 
 
 

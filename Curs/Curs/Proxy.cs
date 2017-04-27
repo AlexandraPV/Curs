@@ -60,7 +60,7 @@ namespace Curs
 		public override bool Enter_Lib(Person pers, string pass)
 
 		{
-			if (pers.password.Equals(pass) == true)
+			if (pers.Password.Equals(pass) == true)
 
 				return true;
 
