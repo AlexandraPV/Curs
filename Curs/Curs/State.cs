@@ -3,7 +3,7 @@ namespace Curs
 
 {
 
-	abstract class State
+	public abstract class State
 
 	{
 
@@ -14,7 +14,7 @@ namespace Curs
 	}
 
 
-	class BookInLibraryState : State
+	public class BookInLibraryState : State
 
 	{
 
@@ -22,6 +22,7 @@ namespace Curs
 
 		{
 			strStatename = "BookInLibraryState";
+
 		}
 
 		override public void TakeBook()
@@ -34,7 +35,7 @@ namespace Curs
 	}
 
 
-	class BookTakenState : State
+	public class BookTakenState : State
 
 	{
 		public BookTakenState()
@@ -54,7 +55,7 @@ namespace Curs
 	}
 
 
-	class BookTakenLongTimeState : State
+	public class BookTakenLongTimeState : State
 
 	{
 
@@ -74,7 +75,7 @@ namespace Curs
 
 	}
 
-	class BookLostState : State
+	public class BookLostState : State
 
 	{
 
@@ -94,104 +95,6 @@ namespace Curs
 
 	}
 
-	/*
-
-	class LibraryBook
-	{
-		private State CurrentState;
-
-		BookInLibraryState bookInLibraryState = new BookInLibraryState();
-		BookTakenState bookTakenState = new BookTakenState();
-		BookTakenLongTimeState bookTakenLongTimeState = new BookTakenLongTimeState();
-		BookLostState bookLostState = new BookLostState();
 
 
-		public LibraryBook()
-		{
-			CurrentState = firstState;
-		}
-
-		public void InstallProgramFirst()
-		{
-			if (CurrentState == firstState)
-			{
-				CurrentState.Install();
-				CurrentState = secondState;
-			}
-			else Console.WriteLine("Programm already is installed");
-		}
-
-
-
-		public void InstallProgramSecond()
-		{
-			if (CurrentState == secondState)
-			{
-				CurrentState.Install();
-				CurrentState = thirdState;
-			}
-			else if (CurrentState == firstState)
-			{
-				Console.WriteLine("You should install First program");
-			}
-			else Console.WriteLine("Programm already is installed");
-		}
-
-		public void InstallProgramThird()
-		{
-
-
-			if (CurrentState == thirdState)
-			{
-				CurrentState.Install();
-				CurrentState = endState;
-
-			}
-			else if (CurrentState == firstState)
-			{
-				Console.WriteLine("You should install First and Second program");
-			}
-			else if (CurrentState == secondState)
-			{
-				Console.WriteLine("You should install Second program");
-			}
-
-			else if (CurrentState == endState)
-			{
-				Console.WriteLine("Programm already is installed");
-			}
-
-		}
-
-	}
-
-
-
-
-	public class Client
-
-	{
-
-		public static int Main(string[] args)
-
-		{
-
-			Computer computer = new Computer();
-
-			computer.InstallProgramSecond();
-			computer.InstallProgramFirst();
-			computer.InstallProgramSecond();
-			computer.InstallProgramThird();
-			computer.InstallProgramThird();
-
-
-
-			Console.ReadKey();
-
-			return 0;
-
-		}
-
-	}
-*/
 }

@@ -1,6 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections;
+using System.IO;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Threading;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Serialization;
+using Microsoft.Win32.SafeHandles;
+using System.Runtime;
 
 namespace Curs
 {
@@ -25,7 +34,7 @@ namespace Curs
 
 		static public void Enter(Hashtable personMap)
 		{
-			
+
 			String loginP;
 			string passwordP;
 			Console.WriteLine("Login: ");
@@ -72,8 +81,8 @@ namespace Curs
 			password = Console.ReadLine();
 
 			Person pers = new Person(name, surname, login, password, dateBirth, listBook1);
-			personMap[pers.login] = pers;	
-			Console.WriteLine(name +" "+ surname +" Welcome to library!");
+			personMap[pers.login] = pers;
+			Console.WriteLine(name + " " + surname + " Welcome to library!");
 			Account(pers);
 			//Enter(personMap);    //test (must delete)
 		}
@@ -93,8 +102,34 @@ namespace Curs
 
 		}
 
+		static public void FindBook(string name, string autor)
+		{
+			
+		}
 
-	
+
+		static public void TakeBook(BookAll book, Person pers)
+		{
+			pers.Addtolist(book);
+			book.setStateTakeBook();
+		}
+
+		static public void ReturnBook(BookAll book, Person pers)
+		{
+			foreach (BookAll book1 in pers.getListBook())
+			{
+				if (book1.name == book.name && book1.autor == book.autor)
+				{
+					pers.Removelist(book);
+					book.setStateReturnBook();
+				}
+				else Console.WriteLine("You didn`t take this book");
+			}
+
+		}
+
+
+
 
 		static public void Command()
 		{
@@ -112,10 +147,48 @@ namespace Curs
 		static void Main(string[] args)
 		{
 			
+			List<BookAll> listBook1 = new List<BookAll>();
+			BookAll book1 = new BookAll("name1", "autor1", "ganre1");
+			listBook1.Add(book1);
+			//string[] listB = {book1.name};
+
+			Person person = new Person("Name", "Surname", "login", "pass", "01/02/1998", listBook1);
+			Person person2 = new Person("Name2", "Surname2", "login2", "pass2", "01/02/1998", listBook1);
+			Console.WriteLine("Объект создан");
+
+			List<Person> perslist = new List<Person>();
+			perslist.Add(person);
+			perslist.Add(person2);
+			// передаем в конструктор тип класса
+			XmlSerializer formatter = new XmlSerializer(typeof(List<Person>));
+
+			// получаем поток, куда будем записывать сериализованный объект
+			using (FileStream fs = new FileStream("persons.xml", FileMode.OpenOrCreate))
+			{
+				formatter.Serialize(fs, perslist);
+
+				Console.WriteLine("Объект сериализован");
+			}
+
+			// десериализация
+			using (FileStream fs = new FileStream("persons.xml", FileMode.OpenOrCreate))
+			{
+				List<Person> newPerson = (List<Person>)formatter.Deserialize(fs);
+
+				Console.WriteLine("Объект десериализован");
+				Console.WriteLine(newPerson[0].Name + newPerson[0].Surname);
+				Console.WriteLine(newPerson[1].Name + newPerson[1].Surname);
+			}
+
+
 
 			Menu1();
 			Console.ReadKey();
 
 		}
+
+
 	}
+
+
 }
