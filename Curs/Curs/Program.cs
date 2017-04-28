@@ -170,10 +170,9 @@ namespace Curs
 
 		public BookAll(string name, string autor, string ganre)
 		{
-			NameB = name;
-			AutorB = autor;
-			GanreB = ganre;
-			PersonStateB = getStatePerson().strStatename;
+			this.name = name;
+			this.autor = autor;
+			this.ganre = ganre;
 		}
 
 

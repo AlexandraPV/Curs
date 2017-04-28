@@ -33,6 +33,7 @@ namespace Curs
 			{
 				AddBook();
 			}
+
 			else Console.WriteLine("Wrong command");
 		}
 
@@ -70,9 +71,11 @@ namespace Curs
 			}
 
 		}
+
+
 		static public void Registration()
 		{
-			BookAll book1 = new BookAll("name1", "autor1", "ganre1");
+			BookAll book1 = new BookAll("name1", "autor1", "ganre1",1);
 			string name;
 			string surname;
 			string login;
@@ -116,8 +119,6 @@ namespace Curs
 			Console.WriteLine("Ganre:");
 			ganre = Console.ReadLine();
 
-			List<BookAll> newBooks = new List<BookAll>();
-
 			BookAll book = new BookAll(name, autor, ganre, 1);
 			Console.WriteLine(name + "  " + autor + " New Book");
 			WriteInListBooks(book);
@@ -143,7 +144,6 @@ namespace Curs
 
 		static public int GetIDPerson(Person pers)
 		{
-			XmlSerializer formatter = new XmlSerializer(typeof(List<Person>));
 			List<Person> perslist = OpenListPerson();
 			for (int i = 0; i <= perslist.ToArray().Length; i++)
 			{
@@ -154,6 +154,22 @@ namespace Curs
 			return 10;
 		}
 
+		static public int GetIDBookPerson(int id, string name, string autor)
+		{
+			List<Person> perslist = OpenListPerson();
+			List<BookAll> listbook = new List<BookAll>();
+			listbook = perslist[id].ListBook;
+			for (int i = 0; i <= listbook.ToArray().Length; i++)
+			{
+				if (listbook[i].NameB == name && listbook[i].AutorB == autor)
+					return i;
+			}
+			return 10;
+		}
+
+
+
+
 
 		static public void AddBookToPerson(string name, string autor, Person pers)
 		{
@@ -162,8 +178,8 @@ namespace Curs
 			int id = GetIDPerson(pers);
 			Console.WriteLine(id);
 			// получаем поток, куда будем записывать сериализованный объект
-			Person newP = new Person();
-			newP = pers;
+
+		
 			List<BookAll> booklist = OpenListBooks();
 
 			foreach (BookAll book in booklist)
@@ -176,6 +192,39 @@ namespace Curs
 					perslist[id].ListBook.Add(book);
 					//perslist.Remove(pers);
 					//perslist.Add(newP);
+					using (FileStream fs = new FileStream("persons.xml", FileMode.OpenOrCreate))
+					{
+
+						formatter.Serialize(fs, perslist);
+						Console.WriteLine("AddBookToPerson");
+					}
+
+
+				}
+			}
+		}
+
+
+		static public void ReturnBookPerson(string name, string autor, Person pers)
+		{
+			XmlSerializer formatter = new XmlSerializer(typeof(List<Person>));
+			List<Person> perslist = OpenListPerson();
+			int id = GetIDPerson(pers);
+			int idB = GetIDBookPerson(id, name, autor);
+			Console.WriteLine(id);
+			Console.WriteLine(idB);
+			// получаем поток, куда будем записывать сериализованный объект
+			List<BookAll> booklist = OpenListBooks();
+
+			foreach (BookAll book in booklist)
+			{
+				if (book.NameB == name && book.AutorB == autor)
+				{
+					//book.setStateTakeBook();
+					book.PersonStateB = "bookInLibraryState";
+
+					perslist[id].ListBook.RemoveAt(idB);
+
 					using (FileStream fs = new FileStream("persons.xml", FileMode.OpenOrCreate))
 					{
 
@@ -274,12 +323,15 @@ namespace Curs
 
 		static public void Command()
 		{
-			Console.WriteLine("\n \n If you need help please enter 'h' : ");
-			string val = Console.ReadLine();
-			ConvertAll convertall = new ConvertAll();
-			convertall.Convert(val);
-			string val1 = Console.ReadLine();
-			convertall.Convert(val1);
+			while (true)
+			{
+				Console.WriteLine("\n \n If you need help please enter 'h' : ");
+				string val = Console.ReadLine();
+				ConvertAll convertall = new ConvertAll();
+				convertall.Convert(val);
+				string val1 = Console.ReadLine();
+				convertall.Convert(val1);
+			}
 
 		}
 
@@ -291,9 +343,9 @@ namespace Curs
 
 			//BookAll book = new BookAll("Taras Bulba", "Gogol", "povest");
 			//WriteInListBooks(book);
-			Person pers = new Person();
-			pers = OpenListPerson()[0];
-			AddBookToPerson("Taras Bulba", "Gogol",pers);
+			//Person pers = new Person();
+			//pers = OpenListPerson()[0];
+			//AddBookToPerson("Taras Bulba", "Gogol",pers);
 
 			Menu1();
 			Console.ReadKey();

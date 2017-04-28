@@ -16,9 +16,24 @@
       </BookAll>
       <BookAll>
         <id>0</id>
-        <nameB>Taras Bulba</nameB>
-        <autorB>Gogol</autorB>
-        <ganreB>povest</ganreB>
+        <nameB>new</nameB>
+        <autorB>new</autorB>
+        <ganreB>new</ganreB>
+        <PersonStateB>bookTakenState</PersonStateB>
+      </BookAll>
+      <BookAll>
+        <id>0</id>
+        <nameB>new</nameB>
+        <autorB>new</autorB>
+        <ganreB>new</ganreB>
+        <PersonStateB>bookTakenState</PersonStateB>
+      </BookAll>
+    </listBook>
+  </Person>
+</ArrayOfPerson>id>
+        <nameB>new</nameB>
+        <autorB>new</autorB>
+        <ganreB>new</ganreB>
         <PersonStateB>bookTakenState</PersonStateB>
       </BookAll>
     </listBook>
