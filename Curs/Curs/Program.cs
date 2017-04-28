@@ -182,7 +182,8 @@ namespace Curs
 			NameB = name;
 			AutorB = autor;
 			GanreB = ganre;
-			PersonStateB = getStatePerson().strStatename;
+
+			PersonStateB = "bookInLibraryState";
 
 		}
 

@@ -30,4 +30,36 @@
       </BookAll>
     </listBook>
   </Person>
+  <Person>
+    <name>t</name>
+    <surname>t</surname>
+    <login>t</login>
+    <password>t</password>
+    <dateBirth>t</dateBirth>
+    <listBook>
+      <BookAll>
+        <id>0</id>
+        <nameB>name1</nameB>
+        <autorB>autor1</autorB>
+        <ganreB>ganre1</ganreB>
+        <PersonStateB>bookInLibraryState</PersonStateB>
+      </BookAll>
+    </listBook>
+  </Person>
+  <Person>
+    <name />
+    <surname />
+    <login />
+    <password />
+    <dateBirth />
+    <listBook>
+      <BookAll>
+        <id>0</id>
+        <nameB>name1</nameB>
+        <autorB>autor1</autorB>
+        <ganreB>ganre1</ganreB>
+        <PersonStateB>bookInLibraryState</PersonStateB>
+      </BookAll>
+    </listBook>
+  </Person>
 </ArrayOfPerson>
