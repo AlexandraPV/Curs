@@ -1,19 +1,61 @@
 <?xml version="1.0"?>
 <ArrayOfPerson xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Person>
-    <name>n</name>
-    <surname>n</surname>
-    <login>n</login>
-    <password>n</password>
-    <dateBirth>n</dateBirth>
+    <name>Ivan</name>
+    <surname>Ivanov</surname>
+    <login>ivan</login>
+    <password>pass</password>
+    <dateBirth>23/11/1997</dateBirth>
     <listBook>
       <BookAll>
         <id>0</id>
-        <nameB>name1</nameB>
-        <autorB>autor1</autorB>
-        <ganreB>ganre1</ganreB>
+        <nameB>Don Quixote</nameB>
+        <autorB>Miguel de Cervantes</autorB>
+        <ganreB>Novel</ganreB>
         <PersonStateB>bookTakenState</PersonStateB>
       </BookAll>
+      <BookAll>
+        <id>0</id>
+        <nameB>Hamlet</nameB>
+        <autorB>William Shakespeare</autorB>
+        <ganreB>Tragedy</ganreB>
+        <PersonStateB>bookTakenState</PersonStateB>
+      </BookAll>
+      <BookAll>
+        <id>0</id>
+        <nameB>The Great Gatsby</nameB>
+        <autorB>F. Scott Fitzgerald</autorB>
+        <ganreB>Novel</ganreB>
+        <PersonStateB>bookTakenState</PersonStateB>
+      </BookAll>
+    </listBook>
+  </Person>
+  <Person>
+    <name>Alexandra</name>
+    <surname>Pyvovarchuk</surname>
+    <login>alisandra</login>
+    <password>pass</password>
+    <dateBirth>02/01/1998</dateBirth>
+    <listBook>
+      <BookAll>
+        <id>0</id>
+      </BookAll>
+      <BookAll>
+        <id>0</id>
+        <nameB>The Iliad</nameB>
+        <autorB>Homer</autorB>
+        <ganreB>Epic poem</ganreB>
+        <PersonStateB>bookTakenState</PersonStateB>
+      </BookAll>
+    </listBook>
+  </Person>
+  <Person>
+    <name>name</name>
+    <surname>surname</surname>
+    <login>ligin</login>
+    <password>pass</password>
+    <dateBirth>30/06/1988</dateBirth>
+    <listBook>
       <BookAll>
         <id>0</id>
         <nameB>new</nameB>
@@ -31,34 +73,14 @@
     </listBook>
   </Person>
   <Person>
-    <name>t</name>
-    <surname>t</surname>
-    <login>t</login>
-    <password>t</password>
-    <dateBirth>t</dateBirth>
+    <name>Sasha</name>
+    <surname>Petrov</surname>
+    <login>petrovsa</login>
+    <password>pass</password>
+    <dateBirth>04/07/1998</dateBirth>
     <listBook>
       <BookAll>
         <id>0</id>
-        <nameB>name1</nameB>
-        <autorB>autor1</autorB>
-        <ganreB>ganre1</ganreB>
-        <PersonStateB>bookInLibraryState</PersonStateB>
-      </BookAll>
-    </listBook>
-  </Person>
-  <Person>
-    <name />
-    <surname />
-    <login />
-    <password />
-    <dateBirth />
-    <listBook>
-      <BookAll>
-        <id>0</id>
-        <nameB>name1</nameB>
-        <autorB>autor1</autorB>
-        <ganreB>ganre1</ganreB>
-        <PersonStateB>bookInLibraryState</PersonStateB>
       </BookAll>
     </listBook>
   </Person>

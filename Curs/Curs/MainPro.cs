@@ -16,25 +16,31 @@ namespace Curs
 {
 	public class MainPro
 	{
+
+
+
 		static public void Menu1()
 		{
-			Console.WriteLine("Menu \n Enter - e \n Registration - r \n Add book - b \n ");
-			string com = Console.ReadLine();
+			while (true)
+			{
+				Console.WriteLine("Menu \n Enter - e \n Registration - r \n Add book - b \n ");
+				string com = Console.ReadLine();
 
-			if (com.Equals("e") == true)
-			{
-				Enter();
-			}
-			else if (com.Equals("r") == true)
-			{
-				Registration();
-			}
-			else if(com.Equals("b") == true)
-			{
-				AddBook();
-			}
+				if (com.Equals("e") == true)
+				{
+					Enter();
+				}
+				else if (com.Equals("r") == true)
+				{
+					Registration();
+				}
+				else if (com.Equals("b") == true)
+				{
+					AddBook();
+				}
 
-			else Console.WriteLine("Wrong command");
+				else Console.WriteLine("Wrong command");
+			}
 		}
 
 
@@ -52,6 +58,7 @@ namespace Curs
 		}
 
 
+
 		static public void Enter()
 		{
 
@@ -62,26 +69,33 @@ namespace Curs
 			Console.WriteLine("Password: ");
 			passwordP = Console.ReadLine();
 
-			List<Person> listpers = OpenListPerson();
-			ValidationPerson Prime_Facecontrol = new ValidationPerson();
-			foreach (Person pers in listpers)
+			if (loginP.Length != 0 && passwordP.Length != 0)
 			{
-
-				if (pers.Login == loginP)
+				List<Person> listpers = OpenListPerson();
+				ValidationPerson Prime_Facecontrol = new ValidationPerson();
+				foreach (Person pers in listpers)
 				{
-					if (Prime_Facecontrol.Enter_Lib(pers, passwordP) == true)
+
+					if (pers.Login == loginP)
 					{
-						Account(pers);
+						if (Prime_Facecontrol.Enter_Lib(pers, passwordP) == true)
+						{
+							Account(pers);
+						}
+
+						else {
+							Console.WriteLine("Try again");
+							Enter();
+
+						}
 					}
 
-					else {
-						Console.WriteLine("Try again");
-						Enter();
 
-					}
 				}
-
-
+			}
+			else {
+				Console.WriteLine("You must fill all field");
+				Enter();
 			}
 
 		}
@@ -89,7 +103,7 @@ namespace Curs
 
 		static public void Registration()
 		{
-			BookAll book1 = new BookAll("name1", "autor1", "ganre1",1);
+			BookAll book1 = new BookAll();
 			string name;
 			string surname;
 			string login;
@@ -108,34 +122,51 @@ namespace Curs
 			dateBirth = Console.ReadLine();
 			Console.WriteLine("Password:");
 			password = Console.ReadLine();
-
-			Person pers = new Person(name, surname, login, password, dateBirth, listBook1);
-			//List<Person> listpers = OpenListPerson();
-			Console.WriteLine(name + " " + surname + " Welcome to library!");
-			WriteInListPerson(pers);
-			Account(pers);
-			//Enter(personMap);    //test (must delete)
+			if (name.Length != 0 && surname.Length != 0 && login.Length != 0 && dateBirth.Length != 0 && password.Length != 0)
+			{
+				Person pers = new Person(name, surname, login, password, dateBirth, listBook1);
+				//List<Person> listpers = OpenListPerson();
+				Console.WriteLine(name + " " + surname + " Welcome to library!");
+				WriteInListPerson(pers);
+				Account(pers);
+				//Enter(personMap);    //test (must delete)
+			}
+			else {
+				Console.WriteLine("You must fill all field");
+				Registration();
+			}
 		}
 
 
 
 		static public void AddBook()
 		{
-			
+			string spec = "12345";
+			string spec1;
 		    string name;
 		    string autor;
 			string ganre;
 
-			Console.WriteLine("Name:");
-			name = Console.ReadLine();
-			Console.WriteLine("Autor:");
-			autor = Console.ReadLine();
-			Console.WriteLine("Ganre:");
-			ganre = Console.ReadLine();
+			Console.WriteLine("Please enter spesial password");
+			spec1 = Console.ReadLine();
 
-			BookAll book = new BookAll(name, autor, ganre, 1);
-			Console.WriteLine(name + "  " + autor + " New Book");
-			WriteInListBooks(book);
+			if ((spec1.Equals(spec) == true))
+			{
+				Console.WriteLine("Name:");
+				name = Console.ReadLine();
+				Console.WriteLine("Autor:");
+				autor = Console.ReadLine();
+				Console.WriteLine("Ganre:");
+				ganre = Console.ReadLine();
+
+				BookAll book = new BookAll(name, autor, ganre, 1);
+				Console.WriteLine(name + "  " + autor + " New Book");
+				WriteInListBooks(book);
+			}
+			else 
+			{
+				Console.WriteLine("You enter wrong password!");
+			}
 
 		}
 
@@ -163,7 +194,6 @@ namespace Curs
 			{
 				if (perslist[i].Login == pers.Login)
 					return i;
-				else return -1;
 			}
 			return 10;
 		}
@@ -200,19 +230,17 @@ namespace Curs
 			{
 				if (book.NameB == name && book.AutorB == autor)
 				{
-					//book.setStateTakeBook();
+					
 					book.PersonStateB = "bookTakenState";
-					//newP.ListBook.Add(book);
 					perslist[id].ListBook.Add(book);
-					//perslist.Remove(pers);
-					//perslist.Add(newP);
+
 					using (FileStream fs = new FileStream("persons.xml", FileMode.OpenOrCreate))
 					{
-
 						formatter.Serialize(fs, perslist);
-						Console.WriteLine("AddBookToPerson");
+						//Console.WriteLine("AddBookToPerson");
 					}
 
+			
 
 				}
 			}
@@ -239,12 +267,14 @@ namespace Curs
 
 					perslist[id].ListBook.RemoveAt(idB);
 
+
 					using (FileStream fs = new FileStream("persons.xml", FileMode.OpenOrCreate))
 					{
 
 						formatter.Serialize(fs, perslist);
-						Console.WriteLine("AddBookToPerson");
+						//Console.WriteLine("AddBookToPerson");
 					}
+
 
 
 				}
@@ -252,10 +282,14 @@ namespace Curs
 		}
 
 
-		static public void TakeBook(BookAll book, Person pers)
+		static public void TakeBook(BookAll book)
 		{
-			pers.Addtolist(book);
 			book.setStateTakeBook();
+		}
+
+		static public void ReturnBook(BookAll book)
+		{
+			book.setStateReturnBook();
 		}
 
 		static public void ReturnBook(BookAll book, Person pers)
@@ -279,7 +313,7 @@ namespace Curs
 			{
 				List<Person> newPerson = (List<Person>)formatter.Deserialize(fs);
 
-				Console.WriteLine("Объект десериализован");
+				//Console.WriteLine("Объект десериализован");
 				return newPerson;
 			}
 		}
@@ -294,9 +328,8 @@ namespace Curs
 			// получаем поток, куда будем записывать сериализованный объект
 			using (FileStream fs = new FileStream("persons.xml", FileMode.OpenOrCreate))
 			{
-				
 				formatter.Serialize(fs, perslist);
-				Console.WriteLine("WriteInListPerson");
+				//Console.WriteLine("WriteInListPerson");
 			}
 		}
 
@@ -311,7 +344,7 @@ namespace Curs
 			{
 				List<BookAll> newBooks = (List<BookAll>)formatter.Deserialize(fs);
 
-				Console.WriteLine("Объект десериализован");
+				//Console.WriteLine("Объект десериализован");
 
 				return newBooks;
 			}
@@ -330,7 +363,7 @@ namespace Curs
 			{
 
 				formatter.Serialize(fs, booklist);
-				Console.WriteLine("WriteInListBooks");
+				//Console.WriteLine("WriteInListBooks");
 			}
 		}
 
@@ -343,8 +376,6 @@ namespace Curs
 				string val = Console.ReadLine();
 				ConvertAll convertall = new ConvertAll();
 				convertall.Convert(val);
-				string val1 = Console.ReadLine();
-				convertall.Convert(val1);
 			}
 
 		}
@@ -354,12 +385,6 @@ namespace Curs
 		static void Main(string[] args)
 		{
 
-
-			//BookAll book = new BookAll("Taras Bulba", "Gogol", "povest");
-			//WriteInListBooks(book);
-			//Person pers = new Person();
-			//pers = OpenListPerson()[0];
-			//AddBookToPerson("Taras Bulba", "Gogol",pers);
 
 			Menu1();
 			Console.ReadKey();

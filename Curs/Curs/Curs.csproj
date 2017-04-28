@@ -43,6 +43,7 @@
     <Compile Include="MainPro.cs" />
     <Compile Include="Proxy.cs" />
     <Compile Include="ChainofResponsibility.cs" />
+    <Compile Include="Builder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

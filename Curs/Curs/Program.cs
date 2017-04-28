@@ -12,28 +12,7 @@ using Microsoft.Win32.SafeHandles;
 using System.Runtime;
 namespace Curs
 {
-	/*class MainClass
-	{
-		public static void Main(string[] args)
-		{
-			Console.WriteLine("Hello World!");
-		}
-	}
-*/
-	public class PersonCache
-	{
-
-		private static Hashtable personMap = new Hashtable();
-
-		public static Person getPerson(String personCode)
-		{
-
-			Person cachedPerson = (Person)personMap[personCode];
-
-			return cachedPerson;
-
-		}
-	}
+	
 
 	[Serializable]
 	public  class Person
@@ -51,11 +30,6 @@ namespace Curs
 		public String dateBirth;
 		[XmlIgnore]
 		List<BookAll> listBook = new List<BookAll>();
-
-
-
-
-
 
 
 		/*public Person(String name,String surname, String login, string password, String dateBirth, List<BookAll> listBook)
@@ -147,7 +121,6 @@ namespace Curs
 		public string name;
 		public string autor;
 		public string ganre;
-
 
 
 		BookInLibraryState bookInLibraryState = new BookInLibraryState();

@@ -43,13 +43,15 @@ namespace Curs
 			{
 				case "exit": return 0;   
 				case "h": return 1;
-				//case "a": return 2;      //account
+				case "a": return 2;      //account
 				case "f": return 3;      //found book
 				case "p": return 4;      //print book
 				case "d": return 5;      //order
 				case "t": return 6;      //take book
 				case "r": return 7;     //return book
-				case "c": return 8;	
+				case "c": return 8;     //time
+				case "b": return 9;    //add book
+				case "o": return 10;    //all books
 				default: Console.WriteLine("ERROR"); return -1;
 
 			}
@@ -211,6 +213,72 @@ namespace Curs
 			}
 		}
 
+
+		public static void AllBooks()
+		{
+			Console.WriteLine("All books: \n");
+
+			List<BookAll> booklist = MainPro.OpenListBooks();
+			foreach (BookAll book in booklist)
+			{
+				
+					Console.WriteLine("Name: " + book.NameB);
+					Console.WriteLine("Autor: " + book.AutorB);
+					Console.WriteLine("Ganre: " + book.GanreB);
+					Console.WriteLine("PersonState: " + book.PersonStateB);
+					Console.WriteLine("\n");
+
+			}
+		}
+
+
+		static public void PrintBookAll()
+		{
+			string type;
+			string header;
+			string img;
+			string content;
+			Console.WriteLine("What type of book?(magazine or book)");
+			type = Console.ReadLine();
+			if ((type.Equals("magazine") == true))
+			{
+				Console.WriteLine("Header: ");
+				header = Console.ReadLine();
+				Console.WriteLine("Images (yes or no: )");
+				img = Console.ReadLine();
+				Console.WriteLine("Content(mind idea): ");
+				content = Console.ReadLine();
+				PubBuilder magazineBuilder = new MagazineBuilder();
+				Director dir = new Director();
+				BookPub magazineReport = dir.GenerateReport(magazineBuilder, header, img, content);
+				Console.WriteLine(magazineReport.Header);
+				Console.WriteLine(magazineReport.Content);
+				Console.WriteLine(magazineReport.Image);
+				PrintBook();
+			}
+			else if ((type.Equals("book") == true))
+			{
+				Console.WriteLine("Header: ");
+				header = Console.ReadLine();
+				Console.WriteLine("Images (yes or no: )");
+				img = Console.ReadLine();
+				Console.WriteLine("Content(mind idea): ");
+				content = Console.ReadLine();
+				PubBuilder bookBuilder = new BookBuilder();
+				Director dir = new Director();
+				BookPub bookReport = dir.GenerateReport(bookBuilder,header,img,content);
+				Console.WriteLine(bookReport.Header);
+				Console.WriteLine(bookReport.Content);
+				Console.WriteLine(bookReport.Image);
+				PrintBook();
+			}
+			else 
+			{
+			    Console.WriteLine("Wrong command");
+				PrintBookAll();
+			}
+		}
+
 		static public void PrintBook()
 		{
 			InventoryItem itm = new InventoryItem();
@@ -252,13 +320,16 @@ namespace Curs
 		public void Convert(int val)
 		{
 			if (val == 1)
-				Console.WriteLine(" h - help \n a - account \n f - found book \n p - print book \n d - do order \n t - take a book \n r - return book \n c - timetable");
+				Console.WriteLine(" h - help \n a - account \n f - found book \n p - print book \n d - do order \n t - take a book \n r - return book \n c - timetable \n b - add book \n o - all books \n");
+			else if (val == 2)
+				MainPro.Enter();
+
 			else if (val == 3)
 				FoundBookMenu();
 			else if (val == 4)
 			{
 				ChooseAgen();
-				PrintBook();
+				PrintBookAll();
 			}
 			else if (val == 5)
 			{
@@ -347,6 +418,14 @@ namespace Curs
 			else if (val == 8)
 			{
 				MainPro.Room();
+			}
+			else if (val == 9)
+			{
+				MainPro.AddBook();
+			}
+			else if (val == 10)
+			{
+				AllBooks();
 			}
 
 			else Console.WriteLine("ERROR");
