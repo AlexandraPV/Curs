@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<ArrayOfBookAll xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <BookAll>
+    <id>0</id>
+    <nameB>Taras Bulba</nameB>
+    <autorB>Gogol</autorB>
+    <ganreB>povest</ganreB>
+    <PersonStateB>BookInLibraryState</PersonStateB>
+  </BookAll>
+  <BookAll>
+    <id>0</id>
+    <nameB>new</nameB>
+    <autorB>new</autorB>
+    <ganreB>new</ganreB>
+    <PersonStateB>BookInLibraryState</PersonStateB>
+  </BookAll>
+</ArrayOfBookAll>

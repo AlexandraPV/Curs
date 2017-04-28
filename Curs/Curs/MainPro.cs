@@ -11,13 +11,14 @@ using System.Xml.Serialization;
 using Microsoft.Win32.SafeHandles;
 using System.Runtime;
 
+
 namespace Curs
 {
 	public class MainPro
 	{
 		static public void Menu1()
 		{
-			Console.WriteLine("Menu \n Enter - e \n Registration - r \n ");
+			Console.WriteLine("Menu \n Enter - e \n Registration - r \n Add book - b \n ");
 			string com = Console.ReadLine();
 
 			if (com.Equals("e") == true)
@@ -27,6 +28,10 @@ namespace Curs
 			else if (com.Equals("r") == true)
 			{
 				Registration();
+			}
+			else if(com.Equals("b") == true)
+			{
+				AddBook();
 			}
 			else Console.WriteLine("Wrong command");
 		}
@@ -95,6 +100,32 @@ namespace Curs
 			//Enter(personMap);    //test (must delete)
 		}
 
+
+
+		static public void AddBook()
+		{
+			
+		    string name;
+		    string autor;
+			string ganre;
+
+			Console.WriteLine("Name:");
+			name = Console.ReadLine();
+			Console.WriteLine("Autor:");
+			autor = Console.ReadLine();
+			Console.WriteLine("Ganre:");
+			ganre = Console.ReadLine();
+
+			List<BookAll> newBooks = new List<BookAll>();
+
+			BookAll book = new BookAll(name, autor, ganre, 1);
+			Console.WriteLine(name + "  " + autor + " New Book");
+			WriteInListBooks(book);
+
+		}
+
+
+
 		static public void Account(Person pers)
 		{
 			Console.WriteLine("Name: " + pers.Name);
@@ -110,9 +141,51 @@ namespace Curs
 
 		}
 
-		static public void FindBook(string name, string autor)
+		static public int GetIDPerson(Person pers)
 		{
-			
+			XmlSerializer formatter = new XmlSerializer(typeof(List<Person>));
+			List<Person> perslist = OpenListPerson();
+			for (int i = 0; i <= perslist.ToArray().Length; i++)
+			{
+				if (perslist[i].Login == pers.Login)
+					return i;
+				else return -1;
+			}
+			return 10;
+		}
+
+
+		static public void AddBookToPerson(string name, string autor, Person pers)
+		{
+			XmlSerializer formatter = new XmlSerializer(typeof(List<Person>));
+			List<Person> perslist = OpenListPerson();
+			int id = GetIDPerson(pers);
+			Console.WriteLine(id);
+			// получаем поток, куда будем записывать сериализованный объект
+			Person newP = new Person();
+			newP = pers;
+			List<BookAll> booklist = OpenListBooks();
+
+			foreach (BookAll book in booklist)
+			{
+				if (book.NameB == name && book.AutorB == autor)
+				{
+					//book.setStateTakeBook();
+					book.PersonStateB = "bookTakenState";
+					//newP.ListBook.Add(book);
+					perslist[id].ListBook.Add(book);
+					//perslist.Remove(pers);
+					//perslist.Add(newP);
+					using (FileStream fs = new FileStream("persons.xml", FileMode.OpenOrCreate))
+					{
+
+						formatter.Serialize(fs, perslist);
+						Console.WriteLine("AddBookToPerson");
+					}
+
+
+				}
+			}
 		}
 
 
@@ -144,8 +217,6 @@ namespace Curs
 				List<Person> newPerson = (List<Person>)formatter.Deserialize(fs);
 
 				Console.WriteLine("Объект десериализован");
-				//Console.WriteLine(newPerson[0].Name + newPerson[0].Surname);
-				//Console.WriteLine(newPerson[1].Name + newPerson[1].Surname);
 				return newPerson;
 			}
 		}
@@ -168,16 +239,17 @@ namespace Curs
 
 
 
+
+
 		public static List<BookAll> OpenListBooks()
 		{
 			XmlSerializer formatter = new XmlSerializer(typeof(List<BookAll>));
-			using (FileStream fs = new FileStream("book.xml", FileMode.OpenOrCreate))
+			using (FileStream fs = new FileStream("books.xml", FileMode.OpenOrCreate))
 			{
 				List<BookAll> newBooks = (List<BookAll>)formatter.Deserialize(fs);
 
 				Console.WriteLine("Объект десериализован");
-				//Console.WriteLine(newPerson[0].Name + newPerson[0].Surname);
-				//Console.WriteLine(newPerson[1].Name + newPerson[1].Surname);
+
 				return newBooks;
 			}
 		}
@@ -185,6 +257,7 @@ namespace Curs
 		public static void WriteInListBooks(BookAll book)
 		{
 			XmlSerializer formatter = new XmlSerializer(typeof(List<BookAll>));
+			//List<BookAll> booklist = new List<BookAll>();
 			List<BookAll> booklist = OpenListBooks();
 			Console.WriteLine(book.NameB);
 			booklist.Add(book);
@@ -194,7 +267,7 @@ namespace Curs
 			{
 
 				formatter.Serialize(fs, booklist);
-				Console.WriteLine("WriteInListPerson");
+				Console.WriteLine("WriteInListBooks");
 			}
 		}
 
@@ -210,13 +283,17 @@ namespace Curs
 
 		}
 
-		public static Hashtable personMap = new Hashtable();
+
 
 		static void Main(string[] args)
 		{
 
 
-
+			//BookAll book = new BookAll("Taras Bulba", "Gogol", "povest");
+			//WriteInListBooks(book);
+			Person pers = new Person();
+			pers = OpenListPerson()[0];
+			AddBookToPerson("Taras Bulba", "Gogol",pers);
 
 			Menu1();
 			Console.ReadKey();

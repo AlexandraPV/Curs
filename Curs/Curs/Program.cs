@@ -139,6 +139,7 @@ namespace Curs
 
 	}
 
+	[Serializable]
 	public class BookAll
 
 	{
@@ -146,13 +147,14 @@ namespace Curs
 		public string name;
 		public string autor;
 		public string ganre;
-		public string type;
-		public State personState;
+
+
 
 		BookInLibraryState bookInLibraryState = new BookInLibraryState();
 		BookTakenState bookTakenState = new BookTakenState();
 		BookTakenLongTimeState bookTakenLongTimeState = new BookTakenLongTimeState();
 		BookLostState bookLostState = new BookLostState();
+		public State personState;
 
 		[XmlElement("nameB")]
 		public string NameB { get; set; }
@@ -161,6 +163,9 @@ namespace Curs
 		[XmlElement("ganreB")]
 		public string GanreB { get; set; }
 
+		[XmlElement("PersonStateB")]
+		public string PersonStateB { get; set; }
+
 		public BookAll() { }
 
 		public BookAll(string name, string autor, string ganre)
@@ -168,10 +173,19 @@ namespace Curs
 			NameB = name;
 			AutorB = autor;
 			GanreB = ganre;
+			PersonStateB = getStatePerson().strStatename;
 		}
 
 
+		public BookAll(string name, string autor, string ganre, int id)
+		{
+			
+			NameB = name;
+			AutorB = autor;
+			GanreB = ganre;
+			PersonStateB = getStatePerson().strStatename;
 
+		}
 
 		/*public BookAll(string name, string autor, string ganre)
 		{
@@ -192,10 +206,7 @@ namespace Curs
 			return ganre;
 		}
 
-		public String getType()
-		{
-			return this.type;
-		}
+
 
 		public String getName()
 		{

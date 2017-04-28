@@ -1,47 +1,25 @@
 <?xml version="1.0"?>
 <ArrayOfPerson xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Person>
-    <name>Name2</name>
-    <surname>Surname2</surname>
-    <login>login2</login>
-    <password>pass2</password>
-    <dateBirth>01/02/1998</dateBirth>
+    <name>n</name>
+    <surname>n</surname>
+    <login>n</login>
+    <password>n</password>
+    <dateBirth>n</dateBirth>
     <listBook>
       <BookAll>
         <id>0</id>
         <nameB>name1</nameB>
         <autorB>autor1</autorB>
         <ganreB>ganre1</ganreB>
+        <PersonStateB>bookTakenState</PersonStateB>
       </BookAll>
-    </listBook>
-  </Person>
-  <Person>
-    <name>Name</name>
-    <surname>Surname</surname>
-    <login>login</login>
-    <password>pass</password>
-    <dateBirth>01/02/1998</dateBirth>
-    <listBook>
       <BookAll>
         <id>0</id>
-        <nameB>name1</nameB>
-        <autorB>autor1</autorB>
-        <ganreB>ganre1</ganreB>
-      </BookAll>
-    </listBook>
-  </Person>
-  <Person>
-    <name>d</name>
-    <surname>d</surname>
-    <login>d</login>
-    <password>d</password>
-    <dateBirth>d</dateBirth>
-    <listBook>
-      <BookAll>
-        <id>0</id>
-        <nameB>name1</nameB>
-        <autorB>autor1</autorB>
-        <ganreB>ganre1</ganreB>
+        <nameB>Taras Bulba</nameB>
+        <autorB>Gogol</autorB>
+        <ganreB>povest</ganreB>
+        <PersonStateB>bookTakenState</PersonStateB>
       </BookAll>
     </listBook>
   </Person>
