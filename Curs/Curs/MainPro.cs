@@ -38,6 +38,20 @@ namespace Curs
 		}
 
 
+		static public void Room()
+		{
+			HandlerBase hand1 = new ConcreteHandler1();
+			HandlerBase hand2 = new ConcreteHandler2();
+			HandlerBase hand3 = new ConcreteHandler3();
+			hand1.Successor = hand2;
+			hand2.Successor = hand3;
+
+			Console.WriteLine("What day are interested for you? \n");
+			string day = Console.ReadLine();
+			Console.WriteLine(hand1.SayWhen(day));
+		}
+
+
 		static public void Enter()
 		{
 

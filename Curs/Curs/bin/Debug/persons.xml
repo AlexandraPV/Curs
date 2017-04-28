@@ -30,12 +30,4 @@
       </BookAll>
     </listBook>
   </Person>
-</ArrayOfPerson>id>
-        <nameB>new</nameB>
-        <autorB>new</autorB>
-        <ganreB>new</ganreB>
-        <PersonStateB>bookTakenState</PersonStateB>
-      </BookAll>
-    </listBook>
-  </Person>
 </ArrayOfPerson>

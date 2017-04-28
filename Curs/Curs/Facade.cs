@@ -48,7 +48,8 @@ namespace Curs
 				case "p": return 4;      //print book
 				case "d": return 5;      //order
 				case "t": return 6;      //take book
-				case "r": return 7;     //return book	
+				case "r": return 7;     //return book
+				case "c": return 8;	
 				default: Console.WriteLine("ERROR"); return -1;
 
 			}
@@ -251,7 +252,7 @@ namespace Curs
 		public void Convert(int val)
 		{
 			if (val == 1)
-				Console.WriteLine(" h - help \n a - account \n f - found book \n p - print book \n d - do order \n t - take a book \n r - return book \n");
+				Console.WriteLine(" h - help \n a - account \n f - found book \n p - print book \n d - do order \n t - take a book \n r - return book \n c - timetable");
 			else if (val == 3)
 				FoundBookMenu();
 			else if (val == 4)
@@ -286,7 +287,7 @@ namespace Curs
 
 				foreach (Person pers in listpers)
 				{
-					
+
 					if (pers.Login == loginP)
 					{
 						if (Prime_Facecontrol.Enter_Lib(pers, passwordP) == true)
@@ -342,6 +343,10 @@ namespace Curs
 
 				}
 
+			}
+			else if (val == 8)
+			{
+				MainPro.Room();
 			}
 
 			else Console.WriteLine("ERROR");
