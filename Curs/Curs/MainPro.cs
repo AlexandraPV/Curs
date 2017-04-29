@@ -220,7 +220,7 @@ namespace Curs
 			XmlSerializer formatter = new XmlSerializer(typeof(List<Person>));
 			List<Person> perslist = OpenListPerson();
 			int id = GetIDPerson(pers);
-			Console.WriteLine(id);
+			//Console.WriteLine(id);
 			// получаем поток, куда будем записывать сериализованный объект
 
 		
@@ -253,8 +253,8 @@ namespace Curs
 			List<Person> perslist = OpenListPerson();
 			int id = GetIDPerson(pers);
 			int idB = GetIDBookPerson(id, name, autor);
-			Console.WriteLine(id);
-			Console.WriteLine(idB);
+			//Console.WriteLine(id);
+			//Console.WriteLine(idB);
 			// получаем поток, куда будем записывать сериализованный объект
 			List<BookAll> booklist = OpenListBooks();
 
@@ -322,7 +322,7 @@ namespace Curs
 		{
 			XmlSerializer formatter = new XmlSerializer(typeof(List<Person>));
 			List<Person> perslist = OpenListPerson();
-			Console.WriteLine(pers.Login);
+			//Console.WriteLine(pers.Login);
 			perslist.Add(pers);
 
 			// получаем поток, куда будем записывать сериализованный объект
@@ -355,7 +355,7 @@ namespace Curs
 			XmlSerializer formatter = new XmlSerializer(typeof(List<BookAll>));
 			//List<BookAll> booklist = new List<BookAll>();
 			List<BookAll> booklist = OpenListBooks();
-			Console.WriteLine(book.NameB);
+			//Console.WriteLine(book.NameB);
 			booklist.Add(book);
 
 			// получаем поток, куда будем записывать сериализованный объект

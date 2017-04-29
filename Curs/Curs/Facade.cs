@@ -29,7 +29,7 @@ namespace Curs
 		public void Convert(string val)
 		{
 		   menuTwo.Convert(menuOne.Convert(val));
-		}
+		} 
 	}
 
 
